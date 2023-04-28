@@ -1,6 +1,5 @@
-import fetch from 'node-fetch'
 import xml2js from 'xml2js'
-import { CONFIG, USER_AGENT } from './config'
+import { CONFIG, getPageBody } from './config'
 
 function validateXML(xml: string) {
   return xml.slice(0, 5) === `<?xml`
@@ -13,11 +12,10 @@ export default async function getRSS(type: 'news') {
   const url = `${CONFIG.BASE}/${CONFIG.RSS}/${type}`
 
   try {
-    const xml = await (
-      await fetch(url, {
-        headers: { 'User-Agent': USER_AGENT },
-      })
-    ).text()
+    const regexLessThan = /&lt;/g
+    const regexGreaterThan = /&gt;/g
+    const body = (await getPageBody(url)).replace(regexLessThan, '<').replace(regexGreaterThan, '>')
+    const xml = body.substring(body.indexOf('<?xml'))
     const parser = new xml2js.Parser()
 
     if (!validateXML(xml)) {

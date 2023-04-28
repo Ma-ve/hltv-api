@@ -1,6 +1,5 @@
 import cheerio from 'cheerio'
-import fetch from 'node-fetch'
-import { CONFIG, MAPS, USER_AGENT } from './config'
+import { CONFIG, getPageBody, MAPS } from './config'
 
 interface IEvent {
   name: string
@@ -29,11 +28,7 @@ export async function getMatches(eventId?: number, includeLiveMatches?: boolean)
       : `${CONFIG.BASE}/${CONFIG.MATCHES}`
 
   try {
-    const body = await (
-      await fetch(url, {
-        headers: { 'User-Agent': USER_AGENT },
-      })
-    ).text()
+    const body = await getPageBody(url)
 
     const $ = cheerio.load(body, {
       normalizeWhitespace: true,

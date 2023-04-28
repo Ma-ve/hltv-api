@@ -1,6 +1,5 @@
 import cheerio from 'cheerio'
-import fetch from 'node-fetch'
-import { CONFIG, USER_AGENT } from './config'
+import { CONFIG, getPageBody } from './config'
 
 interface IEvent {
   name: string
@@ -25,11 +24,7 @@ export async function getResults(): Promise<IResult[]> {
   const url = `${CONFIG.BASE}/${CONFIG.RESULTS}`
 
   try {
-    const body = await (
-      await fetch(url, {
-        headers: { 'User-Agent': USER_AGENT },
-      })
-    ).text()
+    const body = await getPageBody(url)
 
     const $ = cheerio.load(body, {
       normalizeWhitespace: true,

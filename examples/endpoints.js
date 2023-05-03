@@ -26,6 +26,12 @@ function makeEndpoints(app, HLTV) {
     res.json(match)
   })
 
+  app.get('/liveMatch/:matchId', async (req, res) => {
+    const { matchId } = req.params
+    const match = await HLTV.getLiveMatchById(matchId)
+    res.json(match)
+  })
+
   app.get('/players', async (_req, res) => {
     const players = await HLTV.getTopPlayers()
     res.json(players)

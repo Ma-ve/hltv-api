@@ -18,11 +18,11 @@ function makeEndpoints(app, HLTV) {
     res.json(matches)
   })
 
-  app.get('/matches/:eventId', async (req, res) => {
-    const { eventId } = req.params
-    console.log(`Calling /matches/${eventId}`)
-    const matches = await HLTV.getMatches(eventId)
-    console.log(`Called /matches/${eventId}`)
+  app.get('/matches/:eventId/:includeLiveMatches', async (req, res) => {
+    const { eventId, includeLiveMatches } = req.params
+    console.log(`Calling /matches/${eventId}/${includeLiveMatches}`)
+    const matches = await HLTV.getMatches(eventId, !!includeLiveMatches)
+    console.log(`Called /matches/${eventId}/${includeLiveMatches}`)
     res.json(matches)
   })
 
@@ -31,6 +31,12 @@ function makeEndpoints(app, HLTV) {
     console.log(`Calling /results/${matchId}/stats`)
     const match = await HLTV.getMatchById(matchId)
     console.log(`Called /results/${matchId}/stats`)
+    res.json(match)
+  })
+
+  app.get('/liveMatch/:matchId', async (req, res) => {
+    const { matchId } = req.params
+    const match = await HLTV.getLiveMatchById(matchId)
     res.json(match)
   })
 

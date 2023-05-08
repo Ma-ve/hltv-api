@@ -36,7 +36,9 @@ function makeEndpoints(app, HLTV) {
 
   app.get('/liveMatch/:matchId', async (req, res) => {
     const { matchId } = req.params
+    console.log(`Calling /liveMatch/${matchId}`)
     const match = await HLTV.getLiveMatchById(matchId)
+    console.log(`Called /liveMatch/${matchId}`)
     res.json(match)
   })
 

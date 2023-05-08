@@ -35,7 +35,7 @@ export async function getPageBody(url: string): Promise<string> {
     ignoreHTTPSErrors: true,
   })
   const page = await context.newPage()
-  await page.goto(url)
+  await page.goto(url, { timeout: 60 * 1000 })
 
   const content = await page.content()
 

@@ -107,9 +107,9 @@ export async function getMatches(eventId?: number, includeLiveMatches?: boolean)
     })
 
     if (!matches.length) {
-      throw new Error(
-        'There are no matches available, something went wrong. Please contact the library maintainer on https://github.com/dajk/hltv-api'
-      )
+      // throw new Error(
+      //   'There are no matches available, something went wrong. Please contact the library maintainer on https://github.com/dajk/hltv-api'
+      // )
     }
 
     return matches

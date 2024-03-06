@@ -79,9 +79,9 @@ export async function getResults(): Promise<IResult[]> {
     })
 
     if (!results.length) {
-      throw new Error(
-        'There are no results available, something went wrong. Please contact the library maintainer on https://github.com/dajk/hltv-api'
-      )
+      // throw new Error(
+      //   'There are no results available, something went wrong. Please contact the library maintainer on https://github.com/dajk/hltv-api'
+      // )
     }
 
     return results

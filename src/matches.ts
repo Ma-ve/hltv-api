@@ -112,6 +112,9 @@ export async function getMatches(eventId?: number, includeLiveMatches?: boolean)
           allContent.html()?.length
         }`
       )
+      if (body?.length < 20_000) {
+        console.log(body.toString())
+      }
     }
 
     return matches

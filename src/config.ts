@@ -23,7 +23,7 @@ export const MAPS = {
   anc: 'Ancient',
 }
 
-export const USER_AGENT = new UserAgent().toString()
+export const USER_AGENT = new UserAgent({ deviceCategory: 'mobile' }).toString()
 
 export async function getPageBody(url: string): Promise<string> {
   const browser = await playwright.chromium.launch({
@@ -32,6 +32,9 @@ export async function getPageBody(url: string): Promise<string> {
   const context = await browser.newContext({
     bypassCSP: true,
     userAgent: USER_AGENT,
+    extraHTTPHeaders: {
+      Referer: 'https://www.hltv.org/',
+    },
     ignoreHTTPSErrors: true,
   })
   const page = await context.newPage()

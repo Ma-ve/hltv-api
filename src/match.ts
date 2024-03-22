@@ -1,5 +1,5 @@
 import cheerio from 'cheerio'
-import { CONFIG, getPageBody } from './config'
+import { CONFIG, getPageBody, USER_AGENT } from './config'
 
 interface IHalfResult {
   side: 't' | 'ct'
@@ -151,6 +151,7 @@ export async function getMatchById(matchId: number): Promise<IMatch> {
         errors.push(`list2.length: ${list2.length}`)
       }
       errors.push(`allContent.html()?.length: ${allContent.html()?.length}`)
+      errors.push(USER_AGENT)
 
       return errors
     }

@@ -1598,11 +1598,6 @@
   "resolved" "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
   "version" "1.0.0"
 
-"detect-indent@~6.0.0":
-  "integrity" "sha512-oSyFlqaTHCItVRGK5RmrmjB+CmaMOW7IaNA/kdxqhoa6d17j/5ce9O9eWXmV/KEdRwqpQA+Vqe8a8Bsybu4YnA=="
-  "resolved" "https://registry.npmjs.org/detect-indent/-/detect-indent-6.0.0.tgz"
-  "version" "6.0.0"
-
 "detect-newline@^3.0.0":
   "integrity" "sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA=="
   "resolved" "https://registry.npmjs.org/detect-newline/-/detect-newline-3.1.0.tgz"
@@ -1624,11 +1619,6 @@
   "version" "3.0.1"
   dependencies:
     "path-type" "^4.0.0"
-
-"docopt@~0.6.2":
-  "integrity" "sha512-NqTbaYeE4gA/wU1hdKFdU+AFahpDOpgGLzHP42k6H6DKExJd0A55KEVWYhL9FEmHmgeLvEU2vuKXDuU+4yToOw=="
-  "resolved" "https://registry.npmjs.org/docopt/-/docopt-0.6.2.tgz"
-  "version" "0.6.2"
 
 "doctrine@^2.1.0":
   "integrity" "sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw=="
@@ -1680,15 +1670,6 @@
     "dom-serializer" "^2.0.0"
     "domelementtype" "^2.3.0"
     "domhandler" "^5.0.1"
-
-"dot-json@^1.2.2":
-  "integrity" "sha512-AKL+GsO4wSEU4LU+fAk/PqN4nQ6PB1vT3HpMiZous9xCzK5S0kh4DzfUY0EfU67jsIXLlu0ty71659N9Nmg+Tw=="
-  "resolved" "https://registry.npmjs.org/dot-json/-/dot-json-1.2.2.tgz"
-  "version" "1.2.2"
-  dependencies:
-    "detect-indent" "~6.0.0"
-    "docopt" "~0.6.2"
-    "underscore-keypath" "~0.0.22"
 
 "electron-to-chromium@^1.4.284":
   "integrity" "sha512-TFeOKd98TpJzRHkr4Aorn16QkMnuCQuGAE6IZ0wYF+qkbSfMPqjplvRppR02tMUpVxZz8nyBNvVm9lIZsqrbPQ=="
@@ -5008,18 +4989,6 @@
     "has-symbols" "^1.0.3"
     "which-boxed-primitive" "^1.0.2"
 
-"underscore-keypath@~0.0.22":
-  "integrity" "sha512-fU7aYj1J2LQd+jqdQ67AlCOZKK3Pl+VErS8fGYcgZG75XB9/bY+RLM+F2xEcKHhHNtLvqqFyXAoZQlLYfec3Xg=="
-  "resolved" "https://registry.npmjs.org/underscore-keypath/-/underscore-keypath-0.0.22.tgz"
-  "version" "0.0.22"
-  dependencies:
-    "underscore" "*"
-
-"underscore@*":
-  "integrity" "sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A=="
-  "resolved" "https://registry.npmjs.org/underscore/-/underscore-1.13.6.tgz"
-  "version" "1.13.6"
-
 "union-value@^1.0.0":
   "integrity" "sha512-tJfXmxMeWYnczCVs7XAEvIV7ieppALdyepWMkHkwciRpZraG/xwT+s2JN8+pr1+8jCRf80FFzvr+MpQeeoF4Xg=="
   "resolved" "https://registry.npmjs.org/union-value/-/union-value-1.0.1.tgz"
@@ -5084,11 +5053,10 @@
   "version" "3.1.1"
 
 "user-agents@^1.0.1363":
-  "integrity" "sha512-lUgn1YgmgfLfJyMHc+v2IvwUXpozsY4tODcAyCZynnGKLeCj/pCH8kh7rw1dNTvbXn1fEx4RwIw5I0P4UQ34+Q=="
-  "resolved" "https://registry.npmjs.org/user-agents/-/user-agents-1.0.1363.tgz"
-  "version" "1.0.1363"
+  "integrity" "sha512-OzS21/3tG2Ai8N0BPrbiMGVyz3KRXLZH9lZE3O2JyWffH4wIfxU+CaIy1YZLp7qJL3RXlkPdiTb86RaDBnrHoQ=="
+  "resolved" "https://registry.npmjs.org/user-agents/-/user-agents-1.1.151.tgz"
+  "version" "1.1.151"
   dependencies:
-    "dot-json" "^1.2.2"
     "lodash.clonedeep" "^4.5.0"
 
 "uuid@^8.0.0", "uuid@^8.3.0":

@@ -1,5 +1,5 @@
 import cheerio from 'cheerio'
-import { CONFIG, getPageBody, MAPS } from './config'
+import { CONFIG, getPageBody, MAPS, USER_AGENT } from './config'
 
 interface IEvent {
   name: string
@@ -107,11 +107,12 @@ export async function getMatches(eventId?: number, includeLiveMatches?: boolean)
     })
 
     if (!matches.length) {
-      console.log(
-        `[matches] !matches.length. body.length: ${body?.length}, allContent.html()?.length: ${
-          allContent.html()?.length
-        }`
-      )
+      const errors = [
+        `userAgent: ${USER_AGENT}`,
+        `body?.length: ${body?.length}`,
+        `allContent.html()?.length: ${allContent.html()?.length}`,
+      ]
+      console.log(`[matches] !matches.length. ${errors.join(', ')}`)
       if (body && body.length < 20000) {
         console.log(`body: ${body.toString()}`)
       }

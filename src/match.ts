@@ -142,9 +142,31 @@ export async function getMatchById(matchId: number): Promise<IMatch> {
       stats2.push(objData)
     })
 
-    if (!stats1.length || !stats2.length) {
+    const errorTexts = () => {
+      const errors = []
+      if (list1.length <= 0) {
+        errors.push(`list1.length: ${list1.length}`)
+      }
+      if (list2.length <= 0) {
+        errors.push(`list2.length: ${list2.length}`)
+      }
+      errors.push(`allContent.html()?.length: ${allContent.html()?.length}`)
+
+      return errors
+    }
+
+    if (!stats1.length) {
       throw new Error(
-        'Something went wrong, here is no correct stats found for this match. Please create an issue in this repository https://github.com/dajk/hltv-api'
+        `[match] Something went wrong, there is no correct stats1 found for match ${matchId}. ${errorTexts().join(
+          ', '
+        )}`
+      )
+    }
+    if (!stats2.length) {
+      throw new Error(
+        `[match] Something went wrong, there is no correct stats2 found for match ${matchId}. ${errorTexts().join(
+          ', '
+        )}`
       )
     }
 

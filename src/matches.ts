@@ -108,7 +108,9 @@ export async function getMatches(eventId?: number, includeLiveMatches?: boolean)
 
     if (!matches.length) {
       console.log(
-        `[matches] !matches.length: allContent.html()?.length: ${allContent.html()?.length}`
+        `[matches] !matches.length. body.length: ${body?.length}, allContent.html()?.length: ${
+          allContent.html()?.length
+        }`
       )
     }
 

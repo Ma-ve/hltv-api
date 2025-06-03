@@ -21,22 +21,26 @@ interface IMatch {
   isLive: boolean
 }
 
-export async function getMatches(eventId?: number, includeLiveMatches?: boolean) {
+export async function getMatches(
+  eventId?: number,
+  includeLiveMatches?: boolean,
+  bodyHtml?: string
+) {
   const url =
     eventId !== undefined
       ? `${CONFIG.BASE}/events/${eventId}/${CONFIG.MATCHES}`
       : `${CONFIG.BASE}/${CONFIG.MATCHES}`
 
   try {
-    const body = await getPageBody(url)
+    const body = bodyHtml ?? (await getPageBody(url))
 
     const $ = cheerio.load(body, {
       normalizeWhitespace: true,
     })
 
-    const selectors = ['.upcomingMatch']
+    const selectors = ['.matches-list-wrapper .match']
     if (includeLiveMatches) {
-      selectors.push('.liveMatch')
+      selectors.push('.liveMatches .liveMatch')
     }
     const allContent = $(selectors.join(','))
     const matches: IMatch[] = []
@@ -50,20 +54,21 @@ export async function getMatches(eventId?: number, includeLiveMatches?: boolean)
 
       let time
       try {
-        time = new Date(parseInt(el.find('.matchTime').attr('data-unix')!, 10)).toISOString()
+        time = new Date(parseInt(el.find('.match-time').attr('data-unix')!, 10)).toISOString()
       } catch (err) {
         time = new Date().toISOString()
       }
       const event: IEvent = {
-        name: el.find('.matchEventName').text(),
-        logo: el.find('.matchEventLogo').attr('src') as string,
+        name: el.find('.matchEventName')?.text(),
+        logo: el.find('.matchEventLogo')?.attr('src') as string,
       }
       const stars = Number(
-        isLive ? el.find('.matchRating .fa-star:not(.fa-star-faded)').length : el.attr('stars')
+        el.find('.match-rating .fa-star:not(.faded)')?.length ??
+          el.find('[data-stars]')?.attr('data-stars')
       )
-      const map: keyof typeof MAPS = el.find('.matchMeta').text() as any
+      const map: keyof typeof MAPS = el.find('.match-meta').text() as any
 
-      const teamsEl = el.find('.matchTeams')
+      const teamsEl = el.find('.match-teams')
 
       // return just valid matches
       if (!teamsEl.html()) {
@@ -74,24 +79,26 @@ export async function getMatches(eventId?: number, includeLiveMatches?: boolean)
       let team2El
 
       if (isLive) {
-        team1El = teamsEl.find('.matchTeam:first-child')
-        team2El = teamsEl.find('.matchTeam:last-child')
+        team1El = teamsEl.find('.match-team:first-child')
+        team2El = teamsEl.find('.match-team:last-child')
       } else {
-        team1El = teamsEl.find('.matchTeam.team1')
-        team2El = teamsEl.find('.matchTeam.team2')
+        team1El = teamsEl.find('.match-team.team1')
+        team2El = teamsEl.find('.match-team.team2')
       }
 
       const team1 = {
         id: Number(isLive ? el.parent().attr('team1') : el.attr('team1')),
-        name: team1El.find('.matchTeamName').text() || /* istanbul ignore next */ 'n/a',
-        logo: team1El.find('.matchTeamLogo').attr('src') as string,
+        name: team1El.find('.match-teamname').text() || /* istanbul ignore next */ 'n/a',
+        logo: team1El.find('.match-team-logo').attr('src') as string,
       }
 
       const team2 = {
         id: Number(isLive ? el.parent().attr('team2') : el.attr('team2')),
-        name: team2El.find('.matchTeamName').text() || 'n/a',
-        logo: team2El.find('.matchTeamLogo').attr('src') as string,
+        name: team2El.find('.match-teamname').text() || 'n/a',
+        logo: team2El.find('.match-team-logo').attr('src') as string,
       }
+      team1.id = Number.isNaN(team1.id) ? -1 : team1.id
+      team2.id = Number.isNaN(team2.id) ? -1 : team2.id
 
       const response: IMatch = {
         id,

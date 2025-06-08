@@ -63,6 +63,14 @@ function makeEndpoints(app, HLTV) {
     const team = await HLTV.getTeamById(Number(teamId))
     res.json(team)
   })
+
+  app.get('/swiss/:eventId', async (req, res) => {
+    const { eventId } = req.params
+    console.log(`Calling /swiss/${eventId}`)
+    const swiss = await HLTV.getSwiss(eventId)
+    console.log(`Called /matches/${eventId}`)
+    res.json(swiss)
+  })
 }
 
 module.exports = makeEndpoints

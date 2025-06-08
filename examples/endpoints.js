@@ -6,7 +6,7 @@ function makeEndpoints(app, HLTV) {
 
   app.get('/results/:eventId', async (_req, res) => {
     const { eventId } = _req.params
-    console.log(`Calling /results/${eventId ?? ''}`)
+    console.log(`Calling /results/${eventId}`)
     const results = await HLTV.getResults(eventId)
     console.log(`Called /results`)
     res.json(results)

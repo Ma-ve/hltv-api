@@ -4,9 +4,10 @@ function makeEndpoints(app, HLTV) {
     res.json(news)
   })
 
-  app.get('/results', async (_req, res) => {
-    console.log(`Calling /results`)
-    const results = await HLTV.getResults()
+  app.get('/results/:eventId', async (_req, res) => {
+    const { eventId } = _req.params
+    console.log(`Calling /results/${eventId ?? ''}`)
+    const results = await HLTV.getResults(eventId)
     console.log(`Called /results`)
     res.json(results)
   })

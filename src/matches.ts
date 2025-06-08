@@ -49,7 +49,7 @@ export async function getMatches(
       const el = $(element)
 
       const isLive = el.hasClass('liveMatch') || !!el.find('.match-meta-live')?.text()
-      const link = el.children('a').attr('href') as string
+      const link = el.find('a').attr('href') as string
       const id = link ? Number(link.split('/')[2]) : -1
 
       let time
@@ -58,8 +58,11 @@ export async function getMatches(
       } catch (err) {
         time = new Date().toISOString()
       }
+
+      const eventName = el.find('.event-name')?.text() || el.find('.matchEventName')?.text()
+
       const event: IEvent = {
-        name: el.find('.matchEventName')?.text(),
+        name: eventName || $('.event-hub-title')?.text(),
         logo: el.find('.matchEventLogo')?.attr('src') as string,
       }
       const stars = Number(

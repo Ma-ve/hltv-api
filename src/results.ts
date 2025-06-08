@@ -32,7 +32,7 @@ export async function getResults(eventId?: number, bodyHtml?: string): Promise<I
 
     const results: IResult[] = []
 
-    const resultElements = $('.allres .result-con')
+    const resultElements = $('.result-con')
     $(resultElements).each((_i, element) => {
       const el = $(element).find('tr')
 

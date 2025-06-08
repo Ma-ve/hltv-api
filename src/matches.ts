@@ -40,7 +40,7 @@ export async function getMatches(
 
     const selectors = ['.matches-list-wrapper .match']
     if (includeLiveMatches) {
-      selectors.push('.liveMatches .liveMatch', '.live-matches-wrapper .match')
+      selectors.push('.live-matches-wrapper .live-match-container > .match')
     }
     const allContent = $(selectors.join(','))
     const matches: IMatch[] = []

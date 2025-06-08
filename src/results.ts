@@ -20,8 +20,8 @@ interface IResult {
   matchId: number
 }
 
-export async function getResults(bodyHtml?: string): Promise<IResult[]> {
-  const url = `${CONFIG.BASE}/${CONFIG.RESULTS}`
+export async function getResults(eventId?: number, bodyHtml?: string): Promise<IResult[]> {
+  const url = `${CONFIG.BASE}/${CONFIG.RESULTS}${eventId ? `?event=${eventId}` : ''}`
 
   try {
     const body = bodyHtml ?? (await getPageBody(url))

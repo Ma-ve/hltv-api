@@ -50,7 +50,7 @@ export async function getMatches(
 
       const isLive = el.hasClass('liveMatch') || !!el.find('.match-meta-live')?.text()
       const link = el.children('a').attr('href') as string
-      const id = Number(link.split('/')[2])
+      const id = link ? Number(link.split('/')[2]) : -1
 
       let time
       try {

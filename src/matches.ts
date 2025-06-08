@@ -40,7 +40,7 @@ export async function getMatches(
 
     const selectors = ['.matches-list-wrapper .match']
     if (includeLiveMatches) {
-      selectors.push('.liveMatches .liveMatch')
+      selectors.push('.liveMatches .liveMatch', '.live-matches-wrapper .match')
     }
     const allContent = $(selectors.join(','))
     const matches: IMatch[] = []
@@ -48,7 +48,7 @@ export async function getMatches(
     allContent.map((_i, element) => {
       const el = $(element)
 
-      const isLive = el.hasClass('liveMatch')
+      const isLive = el.hasClass('liveMatch') || !!el.find('.match-meta-live')?.text()
       const link = el.children('a').attr('href') as string
       const id = Number(link.split('/')[2])
 

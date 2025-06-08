@@ -68,7 +68,7 @@ function makeEndpoints(app, HLTV) {
     const { eventId } = req.params
     console.log(`Calling /swiss/${eventId}`)
     const swiss = await HLTV.getSwiss(eventId)
-    console.log(`Called /matches/${eventId}`)
+    console.log(`Called /swiss/${eventId}`)
     res.json(swiss)
   })
 }

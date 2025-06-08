@@ -2,7 +2,7 @@ import cheerio from 'cheerio'
 import { CONFIG, getPageBody, USER_AGENT } from './config'
 
 export async function getSwiss(eventId: number, bodyHtml?: string) {
-  const url = `${CONFIG.BASE}/events/${eventId}`
+  const url = `${CONFIG.BASE}/events/${eventId}/major`
   try {
     const body = bodyHtml ?? (await getPageBody(url))
 
@@ -12,10 +12,10 @@ export async function getSwiss(eventId: number, bodyHtml?: string) {
 
     const selector = '#GroupPlay'
 
-    const swissHtml = $(selector)
+    const swissHtml = $(selector).html()
 
     const response = {
-      swissHtml,
+      swissHtml: btoa(swissHtml ?? ''),
     }
 
     if (!swissHtml) {

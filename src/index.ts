@@ -6,6 +6,7 @@ import { getTopPlayers } from './players'
 import { getPlayerById, getPlayersByName } from './player'
 import { getTopTeams } from './teams'
 import { getTeamById } from './team'
+import { getSwiss } from './swiss'
 import getRSS from './rss'
 
 export default {
@@ -19,4 +20,5 @@ export default {
   getPlayersByName,
   getTopTeams,
   getTeamById,
+  getSwiss,
 }

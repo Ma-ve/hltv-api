@@ -20,11 +20,11 @@ interface IResult {
   matchId: number
 }
 
-export async function getResults(): Promise<IResult[]> {
+export async function getResults(bodyHtml?: string): Promise<IResult[]> {
   const url = `${CONFIG.BASE}/${CONFIG.RESULTS}`
 
   try {
-    const body = await getPageBody(url)
+    const body = bodyHtml ?? (await getPageBody(url))
 
     const $ = cheerio.load(body, {
       normalizeWhitespace: true,

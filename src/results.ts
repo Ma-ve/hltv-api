@@ -62,9 +62,11 @@ export async function getResults(eventId?: number, bodyHtml?: string): Promise<I
         result: parseInt(result2.text(), 10),
       }
 
+      const eventName = el.find('.event-name')?.text()
+
       const objData: IResult = {
         event: {
-          name: el.find('.event-name').text(),
+          name: eventName || $('.event-hub-title')?.text(),
           logo: /* istanbul ignore next */ el.find('.event-logo').attr('src')?.includes('https://')
             ? (el.find('.event-logo').attr('src') as string)
             : `${CONFIG.BASE}${el.find('.event-logo').attr('src')}`,

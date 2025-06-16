@@ -23,7 +23,7 @@ export const MAPS = {
 }
 
 export const USER_AGENT =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:125.0) Gecko/20100101 Firefox/125.0' // new UserAgent({ deviceCategory: 'mobile' }).toString()
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:125.0) Gecko/20100101 Firefox/126.0' // new UserAgent({ deviceCategory: 'mobile' }).toString()
 
 export async function getPageBody(url: string): Promise<string> {
   const browser = await playwright.chromium.launch({

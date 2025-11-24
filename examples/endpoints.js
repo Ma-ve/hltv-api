@@ -1,3 +1,9 @@
+const line = (input) => {
+  const date = new Date()
+
+  console.log(`[${date.toISOString()}] ${input}`)
+}
+
 function makeEndpoints(app, HLTV) {
   app.get('/', async (_req, res) => {
     const news = await HLTV.getNews()
@@ -6,40 +12,40 @@ function makeEndpoints(app, HLTV) {
 
   app.get('/results/:eventId', async (_req, res) => {
     const { eventId } = _req.params
-    console.log(`Calling /results/${eventId}`)
+    line(`Calling /results/${eventId}`)
     const results = await HLTV.getResults(eventId)
-    console.log(`Called /results`)
+    line(`Called /results`)
     res.json(results)
   })
 
   app.get('/matches', async (_req, res) => {
-    console.log(`Calling /matches`)
+    line(`Calling /matches`)
     const matches = await HLTV.getMatches()
-    console.log(`Called /matches`)
+    line(`Called /matches`)
     res.json(matches)
   })
 
   app.get('/matches/:eventId/:includeLiveMatches', async (req, res) => {
     const { eventId, includeLiveMatches } = req.params
-    console.log(`Calling /matches/${eventId}/${includeLiveMatches}`)
+    line(`Calling /matches/${eventId}/${includeLiveMatches}`)
     const matches = await HLTV.getMatches(eventId, !!includeLiveMatches)
-    console.log(`Called /matches/${eventId}/${includeLiveMatches}`)
+    line(`Called /matches/${eventId}/${includeLiveMatches}`)
     res.json(matches)
   })
 
   app.get('/results/:matchId/stats', async (req, res) => {
     const { matchId } = req.params
-    console.log(`Calling /results/${matchId}/stats`)
+    line(`Calling /results/${matchId}/stats`)
     const match = await HLTV.getMatchById(matchId)
-    console.log(`Called /results/${matchId}/stats`)
+    line(`Called /results/${matchId}/stats`)
     res.json(match)
   })
 
   app.get('/liveMatch/:matchId', async (req, res) => {
     const { matchId } = req.params
-    console.log(`Calling /liveMatch/${matchId}`)
+    line(`Calling /liveMatch/${matchId}`)
     const match = await HLTV.getLiveMatchById(matchId)
-    console.log(`Called /liveMatch/${matchId}`)
+    line(`Called /liveMatch/${matchId}`)
     res.json(match)
   })
 
@@ -67,9 +73,9 @@ function makeEndpoints(app, HLTV) {
 
   app.get('/swiss/:eventId', async (req, res) => {
     const { eventId } = req.params
-    console.log(`Calling /swiss/${eventId}`)
+    line(`Calling /swiss/${eventId}`)
     const swiss = await HLTV.getSwiss(eventId)
-    console.log(`Called /swiss/${eventId}`)
+    line(`Called /swiss/${eventId}`)
     res.json(swiss)
   })
 }

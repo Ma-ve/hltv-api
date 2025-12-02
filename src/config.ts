@@ -23,7 +23,7 @@ export const MAPS = {
 }
 
 export const USER_AGENT =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:125.0) Gecko/20100101 Firefox/126.0' // new UserAgent({ deviceCategory: 'mobile' }).toString()
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:147.0) Gecko/20100101 Firefox/147.0' // new UserAgent({ deviceCategory: 'mobile' }).toString()
 
 export async function getPageBody(url: string): Promise<string> {
   const browser = await playwright.chromium.launch({
@@ -46,7 +46,7 @@ export async function getPageBody(url: string): Promise<string> {
       Pragma: 'nocache',
       'Cache-Control': 'no-cache',
       Cookie:
-        'MatchFilter={%22active%22:false%2C%22live%22:false%2C%22stars%22:1%2C%22lan%22:false%2C%22teams%22:[]}; CookieConsent={stamp:%27ALwlL4byOChi7fogrtFyNc54Vru1aALhfZsUHdzXartA1rx9BIvH+g==%27%2Cnecessary:true%2Cpreferences:false%2Cstatistics:false%2Cmarketing:false%2Cmethod:%27explicit%27%2Cver:1%2Cutc:1707240048272%2Ciab2:%27CP5jqEAP5jqEACGABBENAmEgAAAAAAAAAAAAAAAAAAAA.YAAAAAAAAAAA%27%2Cgacm:%272~AA==fmR2Lg==AAAAAAAAAABCAABAAAgAIAAABAAAAAAACAAAAAAAAAAQAAAAAAABABAAIAAAAAAAAAAAAQAAAAAAAAAAAgMAAAAAAAgAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAQAAAAAAFAAAAAAAAAAAAAAAAARAAAAAAAAAAACAAABAAAAAAAAAAEAAAAAAABAQAAAEAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAACAgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAQAAgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAkQAAAAAAAAAAAAAAAAQ=%27%2Cregion:%27nl%27}; __cf_bm=bLBpbBnwLPEDAj4OKEW8J.LEUrRaSNs28fR1f1wjIYY-1711100738-1.0.1.1-gZHKUIOZu1Nf_uFH7MQkTIUiBhVwWs9IYJMdPHAfjLh7qNmg..vRIg4fzb51WCrKrPS8e5Yykay5UOMDwixyfQ',
+        'CookieConsent={stamp:%27Xw4C1MnpiCB2xXc/e6bmjEQYoYU3SAlj+s09Gnd4B435RuINjWXPDg==%27%2Cnecessary:true%2Cpreferences:true%2Cstatistics:false%2Cmarketing:false%2Cmethod:%27explicit%27%2Cver:1%2Cutc:1763021253920%2Cregion:%27nl%27}; MatchFilter={%22active%22:false%2C%22live%22:false%2C%22stars%22:1%2C%22lan%22:false%2C%22teams%22:[]}; _cfuvid=.4Mch7kNwSj3oLr.Zm9_TKrSU5HwbdyQ40VU.E58DQg-1764166115979-0.0.1.1-604800000; __cflb=02DiuJA2sEFmcj1ss4diFx2uKMeBKSYtUvA7FMzq8knwE; __cf_bm=Q09AlAnunyWdAXMA0ni.3pTT.zLsKiaRrqNG7CMWICg-1764684873-1.0.1.1-ZpDDliwQkPaC.JcWBgxIXoLW0Eo1Z4iPHpYNvvcmetA2xKnWHjr7OgpBOtdhqYQ8epzhkLePpRaAU_39TQEd3RskvKjFESFCBlzRoQ6FUjE',
     },
     ignoreHTTPSErrors: true,
   })
